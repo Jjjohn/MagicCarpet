@@ -1,9 +1,5 @@
 ﻿/*
  * John Kirchner
- * 
- * PlayerController template taken from ProjectPalmer
- *   playerController class
- *
  */
 
 using UnityEngine;
