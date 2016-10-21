@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     private float x, y;
     private float minX, maxX, minY, maxY = 0.0f;
 
-    void FixedUpdate()
+    void Update()
     {
         x = Input.GetAxis("Mouse X");
         y = Input.GetAxis("Mouse Y");
