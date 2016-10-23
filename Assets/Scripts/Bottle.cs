@@ -6,17 +6,22 @@ public class Bottle : MonoBehaviour {
     Vector3 initPos;
     Quaternion initRot;
 
+    private bool isResetting;
+
     void Awake()
     {
+        isResetting = false;
         initPos = transform.position;
         initRot = transform.rotation;
     }
 
     void OnCollisionEnter(Collision col)
-    {
-        //TODO: only register with ball collision
-
-        StartCoroutine(BottleHit());
+    {       
+        if (col.gameObject.name.Contains("Ball") && !isResetting)
+        {
+            isResetting = true;
+            StartCoroutine(BottleHit());
+        }       
     }
 
     IEnumerator BottleHit()
@@ -36,6 +41,7 @@ public class Bottle : MonoBehaviour {
         transform.rotation = initRot;
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        isResetting = false;
     }
 
 }
